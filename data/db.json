@@ -1,0 +1,21 @@
+{
+  "games": [
+    { "id": 1, "name": "Blox Fruits", "icon": "🍎", "status": "working", "feat": "Auto Farm, Sea Beast, Raid", "script": "" },
+    { "id": 2, "name": "Slime RNG", "icon": "🟢", "status": "working", "feat": "Auto Roll, Auto Win", "script": "" },
+    { "id": 3, "name": "Murder Mystery 2", "icon": "🔪", "status": "working", "feat": "ESP, Gun MOD", "script": "" },
+    { "id": 4, "name": "Arsenal", "icon": "🎯", "status": "working", "feat": "Aimbot, ESP", "script": "" },
+    { "id": 5, "name": "Pet Sim X", "icon": "🐾", "status": "partial", "feat": "Auto Hatch (partial)", "script": "" },
+    { "id": 6, "name": "Adopt Me", "icon": "🏠", "status": "partial", "feat": "Dupe Check Only", "script": "" }
+  ],
+  "executors": [
+    { "id": 1, "name": "Synapse X", "platform": "PC", "level": "full", "note": "Best support, semua fitur jalan" },
+    { "id": 2, "name": "KRNL", "platform": "PC", "level": "full", "note": "Free & stabil" },
+    { "id": 3, "name": "Fluxus", "platform": "Mobile", "level": "full", "note": "Android terbaik" },
+    { "id": 4, "name": "Arceus X", "platform": "Mobile", "level": "partial", "note": "Beberapa fitur terbatas" },
+    { "id": 5, "name": "Delta", "platform": "Mobile", "level": "full", "note": "iOS & Android" },
+    { "id": 6, "name": "Script-Ware", "platform": "PC & Mobile", "level": "full", "note": "Premium, semua jalan" }
+  ],
+  "updates": [],
+  "keys": [],
+  "scripts": {}
+}
