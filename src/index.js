@@ -3,16 +3,25 @@ const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const { validateKey } = require('./utils/keys');
 
-// ─── EXPRESS (Render keepalive) ────────────────────────────────────────────
 const app = express();
+app.use(express.json());
+
 app.get('/', (_, res) => res.send('🌟 OrionService Bot — Online'));
 app.get('/health', (_, res) => res.json({ status: 'ok', uptime: process.uptime() }));
+app.get('/validate', (req, res) => {
+  const key = req.query.key;
+  if (!key) return res.json({ valid: false, reason: 'No key provided' });
+  const result = validateKey(key);
+  if (!result.valid) return res.json({ valid: false, reason: result.reason });
+  return res.json({ valid: true, userId: result.data.userId, expiresAt: result.data.expiresAt });
+});
+
 app.listen(process.env.PORT || 3000, () =>
   console.log(`[HTTP] Server running on port ${process.env.PORT || 3000}`)
 );
 
-// ─── CLIENT ────────────────────────────────────────────────────────────────
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -24,7 +33,6 @@ const client = new Client({
 
 client.commands = new Collection();
 
-// ─── LOAD COMMANDS ─────────────────────────────────────────────────────────
 const cmdPath = path.join(__dirname, 'commands');
 const cmdFolders = fs.readdirSync(cmdPath);
 
@@ -34,7 +42,6 @@ for (const folder of cmdFolders) {
   const cmdFiles = fs.readdirSync(folderPath).filter(f => f.endsWith('.js'));
   for (const file of cmdFiles) {
     const exported = require(path.join(folderPath, file));
-    // Support single export or array of commands
     const cmds = Array.isArray(exported) ? exported : [exported];
     for (const cmd of cmds) {
       if ('data' in cmd && 'execute' in cmd) {
@@ -45,7 +52,6 @@ for (const folder of cmdFolders) {
   }
 }
 
-// ─── LOAD EVENTS ───────────────────────────────────────────────────────────
 const evtPath = path.join(__dirname, 'events');
 const evtFiles = fs.readdirSync(evtPath).filter(f => f.endsWith('.js'));
 for (const file of evtFiles) {
@@ -57,7 +63,6 @@ for (const file of evtFiles) {
   }
 }
 
-// ─── LOGIN ─────────────────────────────────────────────────────────────────
 client.login(process.env.TOKEN).catch(err => {
   console.error('[ERROR] Login gagal:', err.message);
   process.exit(1);
