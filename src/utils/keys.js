@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const db = require('./db');
 
-function generateKey(prefix = 'ORION') {
+function generateKey(prefix = 'FIQQ-VIP') {
   const rand = crypto.randomBytes(8).toString('hex').toUpperCase();
   return `${prefix}-${rand.slice(0,4)}-${rand.slice(4,8)}-${rand.slice(8,12)}`;
 }
