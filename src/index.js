@@ -8,7 +8,7 @@ const { validateKey } = require('./utils/keys');
 const app = express();
 app.use(express.json());
 
-app.get('/', (_, res) => res.send('🌟 OrionService Bot — Online'));
+app.get('/', (_, res) => res.send('🌟 Fiqqzr7 Bot — Online'));
 app.get('/health', (_, res) => res.json({ status: 'ok', uptime: process.uptime() }));
 app.get('/validate', (req, res) => {
   const key = req.query.key;
