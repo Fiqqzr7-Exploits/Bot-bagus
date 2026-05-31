@@ -20,7 +20,7 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor(COLORS.primary)
-      .setTitle('⭐ OrionService — Status Panel')
+      .setTitle('⭐ Fiqqzr7XCode — Status Panel')
       .addFields(
         { name: '🤖 Bot', value: '`🟢 Online`', inline: true },
         { name: '⏱️ Uptime', value: `\`${h}j ${m}m ${s}s\``, inline: true },
