@@ -26,7 +26,7 @@ module.exports = {
       .setTitle('🎮 Orion Supported Games')
       .setDescription(`Total **${games.length} game** yang disupport`)
       .setImage('https://files.catbox.moe/vssmwf.gif')
-      .setFooter({ text: 'OrionService • Gunakan /getscript <game> untuk ambil script' })
+      .setFooter({ text: 'Fiqqzr7XCode • Gunakan /getscript <game> untuk ambil script' })
       .setTimestamp();
 
     for (const g of games) {
