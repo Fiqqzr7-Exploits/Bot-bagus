@@ -9,7 +9,7 @@ module.exports = {
   async execute(interaction) {
     const embed = new EmbedBuilder()
       .setColor(COLORS.primary)
-      .setTitle('⭐ OrionService — Command List')
+      .setTitle('⭐ Fiqqzr7Bots — Command List')
       .setDescription('Semua command yang tersedia di OrionService Bot')
       .addFields(
         {
@@ -19,7 +19,7 @@ module.exports = {
             '`/games` — List semua game yang disupport',
             '`/executor` — List executor yang disupport',
             '`/getkey` — Dapatkan key akses',
-            '`/checkkey` — Cek status key lo',
+            '`/checkkey` — Cek status Key',
           ].join('\n'),
           inline: false
         },
@@ -27,7 +27,7 @@ module.exports = {
           name: '📋 Info',
           value: [
             '`/updates` — Lihat update log terbaru',
-            '`/status` — Status panel OrionService',
+            '`/status` — Status panel',
             '`/ping` — Cek latency bot',
           ].join('\n'),
           inline: false
@@ -47,7 +47,7 @@ module.exports = {
           inline: false
         }
       )
-      .setFooter({ text: 'OrionService • Script Hub' })
+      .setFooter({ text: 'Fiqqzr7XCode • Script Hub' })
       .setTimestamp();
 
     await interaction.reply({ embeds: [embed] });
