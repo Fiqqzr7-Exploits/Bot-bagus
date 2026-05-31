@@ -15,7 +15,7 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor(COLORS.purple)
-      .setTitle('⚡ ORION SUPPORTED EXECUTOR')
+      .setTitle('⚡ FIQQZR7 SUPPORTED EXECUTOR')
       .setDescription(`Total **${execs.length} executor** terdaftar`)
       .setFooter({ text: 'OrionService • Script Hub' })
       .setTimestamp();
