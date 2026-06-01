@@ -22,14 +22,14 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor(COLORS.success)
-      .setTitle('🔑 Key OrionService Lo!')
-      .setDescription('Gunakan key ini di script Lua OrionService.')
+      .setTitle('🔑 Key Anda!')
+      .setDescription('Gunakan key ini di script Lua Fiqqzr7.')
       .addFields(
         { name: '🗝️ Key', value: '```\n' + key.key + '\n```', inline: false },
         { name: '⏳ Sisa Waktu', value: '`' + formatExpiry(key.expiresAt) + '`', inline: true },
         { name: '📅 Expired', value: '`' + new Date(key.expiresAt).toLocaleDateString('id-ID') + '`', inline: true },
       )
-      .setFooter({ text: '.gg/orionservice • Jangan share key ini!' })
+      .setFooter({ text: '.gg/Fiqqzr7 • Jangan share key ini!' })
       .setTimestamp();
 
     await interaction.reply({ embeds: [embed], ephemeral: true });
