@@ -2,22 +2,22 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { COLORS } = require('../../utils/embed');
 const db = require('../../utils/db');
 
-const LEVEL_LABEL = { full: '✅ Full Support', partial: '⚠️ Partial', broken: '❌ Tidak Support' };
+const LEVEL_LABEL = { full: '✅ Full Support', partial: '⚠️ Partial', broken: '❌ Tak Support' };
 const PLAT_ICON   = { PC: '💻', Mobile: '📱', 'PC & Mobile': '💻📱' };
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('executor')
-    .setDescription('Lihat daftar executor yang disupport'),
+    .setDescription('Tengok senarai executor yang disupport'),
 
   async execute(interaction) {
     const execs = db.get('executors');
 
     const embed = new EmbedBuilder()
       .setColor(COLORS.purple)
-      .setTitle('⚡ FIQQZR7 SUPPORTED EXECUTOR')
-      .setDescription(`Total **${execs.length} executor** terdaftar`)
-      .setFooter({ text: 'OrionService • Script Hub' })
+      .setTitle('⚡ 9SPEEDWAY SUPPORTED EXECUTOR')
+      .setDescription(`Total **${execs.length} executor** berdaftar`)
+      .setFooter({ text: '9SpeedWay • Script Hub' })
       .setTimestamp();
 
     for (const e of execs) {
