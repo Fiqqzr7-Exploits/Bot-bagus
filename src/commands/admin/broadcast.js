@@ -14,9 +14,9 @@ const TYPE_ICON = { patch:'🔧', feature:'✨', hotfix:'🚨', major:'🚀', ma
 const addupdate = {
   data: new SlashCommandBuilder()
     .setName('addupdate')
-    .setDescription('[ADMIN] Posting update log ke Discord')
+    .setDescription('[ADMIN] Hantar update log ke Discord')
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
-    .addStringOption(o => o.setName('versi').setDescription('Versi update (ex: v2.1.0)').setRequired(true))
+    .addStringOption(o => o.setName('versi').setDescription('Versi update (cth: v2.1.0)').setRequired(true))
     .addStringOption(o => o.setName('judul').setDescription('Judul update').setRequired(true))
     .addStringOption(o => o.setName('tipe').setDescription('Tipe update').setRequired(true)
       .addChoices(
@@ -29,15 +29,15 @@ const addupdate = {
     .addStringOption(o => o.setName('deskripsi').setDescription('Deskripsi update').setRequired(false)),
 
   async execute(interaction) {
-    if (!isAdmin(interaction)) return interaction.reply({ content: '❌ No access.', ephemeral: true });
+    if (!isAdmin(interaction)) return interaction.reply({ content: '❌ Tiada akses.', ephemeral: true });
 
     await interaction.deferReply();
 
     const ver   = interaction.options.getString('versi');
     const title = interaction.options.getString('judul');
     const type  = interaction.options.getString('tipe');
-    const desc  = interaction.options.getString('deskripsi') || 'Tidak ada deskripsi.';
-    const date  = new Date().toLocaleDateString('id-ID', { day:'2-digit', month:'short', year:'numeric' });
+    const desc  = interaction.options.getString('deskripsi') || 'Tiada deskripsi.';
+    const date  = new Date().toLocaleDateString('ms-MY', { day:'2-digit', month:'short', year:'numeric' });
     const icon  = TYPE_ICON[type] || '📌';
 
     // Save to DB
@@ -53,10 +53,10 @@ const addupdate = {
       .addFields(
         { name: 'Tipe', value: type.toUpperCase(), inline: true },
         { name: 'Versi', value: ver, inline: true },
-        { name: 'Tanggal', value: date, inline: true },
+        { name: 'Tarikh', value: date, inline: true },
       )
       .setImage('https://files.catbox.moe/v13x25.jpg')
-      .setFooter({ text: `Dipost oleh ${interaction.user.tag} • OrionService` })
+      .setFooter({ text: `Dipost oleh ${interaction.user.tag} • 9SpeedWay` })
       .setTimestamp();
 
     await interaction.editReply({ embeds: [embed] });
@@ -64,7 +64,7 @@ const addupdate = {
     // Send to webhook
     if (process.env.WEBHOOK_UPDATE) {
       await sendWebhook(process.env.WEBHOOK_UPDATE, {
-        username: 'ORION UPDATE',
+        username: '9SPEEDWAY UPDATE',
         embeds: [{
           title: `${icon} ${ver} — ${title}`,
           description: desc,
@@ -72,10 +72,10 @@ const addupdate = {
           fields: [
             { name: 'Tipe', value: type.toUpperCase(), inline: true },
             { name: 'Versi', value: ver, inline: true },
-            { name: 'Tanggal', value: date, inline: true },
+            { name: 'Tarikh', value: date, inline: true },
           ],
           image: { url: 'https://files.catbox.moe/v13x25.jpg' },
-          footer: { text: 'OrionService • Script Hub' },
+          footer: { text: '9SpeedWay • Script Hub' },
           timestamp: new Date().toISOString(),
         }]
       });
@@ -95,7 +95,7 @@ const ANN_TYPE = {
 const announce = {
   data: new SlashCommandBuilder()
     .setName('announce')
-    .setDescription('[ADMIN] Kirim announcement ke Discord')
+    .setDescription('[ADMIN] Hantar announcement ke Discord')
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     .addStringOption(o => o.setName('judul').setDescription('Judul announcement').setRequired(true))
     .addStringOption(o => o.setName('pesan').setDescription('Isi pesan').setRequired(true))
@@ -109,13 +109,13 @@ const announce = {
       ))
     .addStringOption(o => o.setName('ping').setDescription('Ping siapa?').setRequired(false)
       .addChoices(
-        { name: 'Tidak ada', value: 'none' },
+        { name: 'Tiada', value: 'none' },
         { name: '@everyone', value: 'everyone' },
         { name: '@here', value: 'here' },
       )),
 
   async execute(interaction) {
-    if (!isAdmin(interaction)) return interaction.reply({ content: '❌ No access.', ephemeral: true });
+    if (!isAdmin(interaction)) return interaction.reply({ content: '❌ Tiada akses.', ephemeral: true });
 
     await interaction.deferReply({ ephemeral: true });
 
@@ -129,7 +129,7 @@ const announce = {
     // Send to webhook
     if (process.env.WEBHOOK_ANN) {
       await sendWebhook(process.env.WEBHOOK_ANN, {
-        username: 'OrionService',
+        username: '9SpeedWay',
         content: pingTxt || undefined,
         embeds: [{
           title: `${st.e} ${judul}`,
@@ -137,13 +137,13 @@ const announce = {
           color: st.c,
           fields: [{ name: 'Tipe', value: st.l, inline: true }],
           image: { url: 'https://files.catbox.moe/bcv6bb.gif' },
-          footer: { text: 'OrionService • Script Hub' },
+          footer: { text: '9SpeedWay • Script Hub' },
           timestamp: new Date().toISOString(),
         }]
       });
     }
 
-    await interaction.editReply({ content: `✅ Announcement **${judul}** berhasil dikirim!` });
+    await interaction.editReply({ content: `✅ Announcement **${judul}** berjaya dihantar!` });
   }
 };
 
