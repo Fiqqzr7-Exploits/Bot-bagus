@@ -5,7 +5,7 @@ const { getUserKey, formatExpiry } = require('../../utils/keys');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('getkey')
-    .setDescription('Dapatkan key akses OrionService lo'),
+    .setDescription('Dapatkan key akses 9SpeedWay kau'),
 
   async execute(interaction) {
     const key = getUserKey(interaction.user.id);
@@ -13,23 +13,23 @@ module.exports = {
     if (!key) {
       const embed = new EmbedBuilder()
         .setColor(COLORS.danger)
-        .setTitle('❌ Key Tidak Ditemukan')
-        .setDescription('Lo belum punya key aktif!\n\nHubungi owner/admin untuk dapat key.')
-        .setFooter({ text: '.gg/orionservice' })
+        .setTitle('❌ Key Tak Jumpa')
+        .setDescription('Kau belum ada key aktif!\n\nHubungi owner/admin untuk dapat key.')
+        .setFooter({ text: '.gg/9speedway' })
         .setTimestamp();
       return interaction.reply({ embeds: [embed], ephemeral: true });
     }
 
     const embed = new EmbedBuilder()
       .setColor(COLORS.success)
-      .setTitle('🔑 Key Anda!')
-      .setDescription('Gunakan key ini di script Lua Fiqqzr7.')
+      .setTitle('🔑 Key Kau!')
+      .setDescription('Guna key ni di script Lua 9SpeedWay.')
       .addFields(
         { name: '🗝️ Key', value: '```\n' + key.key + '\n```', inline: false },
-        { name: '⏳ Sisa Waktu', value: '`' + formatExpiry(key.expiresAt) + '`', inline: true },
-        { name: '📅 Expired', value: '`' + new Date(key.expiresAt).toLocaleDateString('id-ID') + '`', inline: true },
+        { name: '⏳ Baki Masa', value: '`' + formatExpiry(key.expiresAt) + '`', inline: true },
+        { name: '📅 Luput', value: '`' + new Date(key.expiresAt).toLocaleDateString('ms-MY') + '`', inline: true },
       )
-      .setFooter({ text: '.gg/Fiqqzr7 • Jangan share key ini!' })
+      .setFooter({ text: '.gg/9speedway • Jangan share key ni!' })
       .setTimestamp();
 
     await interaction.reply({ embeds: [embed], ephemeral: true });
