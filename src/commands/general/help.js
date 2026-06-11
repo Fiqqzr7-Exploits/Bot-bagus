@@ -4,13 +4,13 @@ const { COLORS } = require('../../utils/embed');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('help')
-    .setDescription('Tampilkan semua command OrionService'),
+    .setDescription('Tunjuk semua command 9SpeedWay'),
 
   async execute(interaction) {
     const embed = new EmbedBuilder()
       .setColor(COLORS.primary)
-      .setTitle('⭐ Fiqqzr7Bots — Command List')
-      .setDescription('Semua command yang tersedia di OrionService Bot')
+      .setTitle('⭐ 9SpeedWay — Command List')
+      .setDescription('Semua command yang tersedia di 9SpeedWay Bot')
       .addFields(
         {
           name: '📜 Script & Loader',
@@ -19,7 +19,7 @@ module.exports = {
             '`/games` — List semua game yang disupport',
             '`/executor` — List executor yang disupport',
             '`/getkey` — Dapatkan key akses',
-            '`/checkkey` — Cek status Key',
+            '`/checkkey` — Check status Key',
           ].join('\n'),
           inline: false
         },
@@ -28,7 +28,7 @@ module.exports = {
           value: [
             '`/updates` — Lihat update log terbaru',
             '`/status` — Status panel',
-            '`/ping` — Cek latency bot',
+            '`/ping` — Check latency bot',
           ].join('\n'),
           inline: false
         },
@@ -39,7 +39,7 @@ module.exports = {
             '`/removegame` — Hapus game',
             '`/setscript` — Set script untuk game',
             '`/addupdate` — Posting update log',
-            '`/announce` — Kirim announcement',
+            '`/announce` — Hantar announcement',
             '`/addexec` — Tambah executor',
             '`/givekey` — Beri key ke user',
             '`/revokekey` — Cabut key user',
@@ -47,7 +47,7 @@ module.exports = {
           inline: false
         }
       )
-      .setFooter({ text: 'Fiqqzr7XCode • Script Hub' })
+      .setFooter({ text: '9SpeedWay • Script Hub' })
       .setTimestamp();
 
     await interaction.reply({ embeds: [embed] });
