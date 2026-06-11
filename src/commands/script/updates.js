@@ -7,7 +7,7 @@ const TYPE_ICON = { patch:'🔧', feature:'✨', hotfix:'🚨', major:'🚀', ma
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('updates')
-    .setDescription('Lihat update log terbaru OrionService'),
+    .setDescription('Tengok update log terbaru 9SpeedWay'),
 
   async execute(interaction) {
     const updates = db.get('updates');
@@ -20,16 +20,16 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor(COLORS.cyan)
-      .setTitle('📋 ORION UPDATE — Log Terbaru')
+      .setTitle('📋 9SPEEDWAY UPDATE — Log Terbaru')
       .setImage('https://files.catbox.moe/v13x25.jpg')
-      .setFooter({ text: 'OrionService • Script Hub' })
+      .setFooter({ text: '9SpeedWay • Script Hub' })
       .setTimestamp();
 
     for (const u of latest) {
       const icon = TYPE_ICON[u.type] || '📌';
       embed.addFields({
         name: `${icon} ${u.ver} — ${u.title}`,
-        value: `> ${u.desc || 'Tidak ada deskripsi.'}\n📅 \`${u.date}\` · \`${(u.type || 'patch').toUpperCase()}\``,
+        value: `> ${u.desc || 'Tiada deskripsi.'}\n📅 \`${u.date}\` · \`${(u.type || 'patch').toUpperCase()}\``,
         inline: false,
       });
     }
