@@ -55,7 +55,7 @@ const addupdate = {
         { name: 'Versi', value: ver, inline: true },
         { name: 'Tarikh', value: date, inline: true },
       )
-      .setImage('https://files.catbox.moe/v13x25.jpg')
+      .setImage('https://www.image2url.com/r2/default/gifs/1780773504145-da341a8b-d193-4244-9f7a-5d343ecf7572.gif')
       .setFooter({ text: `Dipost oleh ${interaction.user.tag} • 9SpeedWay` })
       .setTimestamp();
 
@@ -74,8 +74,8 @@ const addupdate = {
             { name: 'Versi', value: ver, inline: true },
             { name: 'Tarikh', value: date, inline: true },
           ],
-          image: { url: 'https://files.catbox.moe/v13x25.jpg' },
-          footer: { text: '9SpeedWay • Script Hub' },
+          image: { url: 'https://www.image2url.com/r2/default/gifs/1780773504145-da341a8b-d193-4244-9f7a-5d343ecf7572.gif' },
+          footer: { text: '9SpeedWay • Powered By Fiqqzr7' },
           timestamp: new Date().toISOString(),
         }]
       });
