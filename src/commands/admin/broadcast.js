@@ -56,7 +56,7 @@ const addupdate = {
         { name: 'Tarikh', value: date, inline: true },
       )
       .setImage('https://files.catbox.moe/v13x25.jpg')
-      .setFooter({ text: `Dipost oleh ${interaction.user.tag} • Fiqqzr7Hub` })
+      .setFooter({ text: `Dipost oleh ${interaction.user.tag} • 9SpeedWay` })
       .setTimestamp();
 
     await interaction.editReply({ embeds: [embed] });
@@ -64,7 +64,7 @@ const addupdate = {
     // Send to webhook
     if (process.env.WEBHOOK_UPDATE) {
       await sendWebhook(process.env.WEBHOOK_UPDATE, {
-        username: 'FIQQZR7HUB UPDATE',
+        username: '9SPEEDWAY UPDATE',
         embeds: [{
           title: `${icon} ${ver} — ${title}`,
           description: desc,
@@ -75,7 +75,7 @@ const addupdate = {
             { name: 'Tarikh', value: date, inline: true },
           ],
           image: { url: 'https://files.catbox.moe/v13x25.jpg' },
-          footer: { text: 'Fiqqzr7Hub • Script Hub' },
+          footer: { text: '9SpeedWay • Script Hub' },
           timestamp: new Date().toISOString(),
         }]
       });
@@ -129,15 +129,15 @@ const announce = {
     // Send to webhook
     if (process.env.WEBHOOK_ANN) {
       await sendWebhook(process.env.WEBHOOK_ANN, {
-        username: 'Fiqqzr7Hub',
+        username: '9SpeedWay',
         content: pingTxt || undefined,
         embeds: [{
           title: `${st.e} ${judul}`,
           description: pesan,
           color: st.c,
           fields: [{ name: 'Tipe', value: st.l, inline: true }],
-          image: { url: 'https://files.catbox.moe/bcv6bb.gif' },
-          footer: { text: 'Fiqqzr7Hub • Script Hub' },
+          image: { url: 'https://www.image2url.com/r2/default/gifs/1780770186075-a72f4a9d-2473-4b84-8514-da361a487f19.gif' },
+          footer: { text: '9SpeedWay • powered By Fiqqzr7' },
           timestamp: new Date().toISOString(),
         }]
       });
