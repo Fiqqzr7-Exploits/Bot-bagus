@@ -25,7 +25,7 @@ const addgame = {
 
   async execute(interaction) {
     if (!isOwner(interaction.user.id) && !interaction.member.permissions.has(PermissionFlagsBits.Administrator)) {
-      return interaction.reply({ content: '❌ Lo tidak punya akses command ini.', ephemeral: true });
+      return interaction.reply({ content: '❌ Kau tak ada akses command ni.', ephemeral: true });
     }
 
     const data = db.read();
@@ -35,7 +35,7 @@ const addgame = {
     const fitur  = interaction.options.getString('fitur') || '';
 
     const exists = data.games.find(g => g.name.toLowerCase() === nama.toLowerCase());
-    if (exists) return interaction.reply({ content: `❌ Game **${nama}** sudah ada!`, ephemeral: true });
+    if (exists) return interaction.reply({ content: `❌ Game **${nama}** dah ada!`, ephemeral: true });
 
     const newGame = { id: Date.now(), name: nama, icon, status, feat: fitur, script: '' };
     data.games.push(newGame);
@@ -43,13 +43,13 @@ const addgame = {
 
     const embed = new EmbedBuilder()
       .setColor(COLORS.success)
-      .setTitle('✅ Game Ditambahkan')
+      .setTitle('✅ Game Ditambah')
       .addFields(
         { name: 'Nama', value: `${icon} ${nama}`, inline: true },
         { name: 'Status', value: status, inline: true },
         { name: 'Fitur', value: fitur || '-', inline: true },
       )
-      .setFooter({ text: `Ditambahkan oleh ${interaction.user.tag}` })
+      .setFooter({ text: `Ditambah oleh ${interaction.user.tag} • 9SpeedWay` })
       .setTimestamp();
 
     await interaction.reply({ embeds: [embed] });
@@ -62,7 +62,7 @@ const removegame = {
     .setName('removegame')
     .setDescription('[ADMIN] Hapus game dari database')
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
-    .addStringOption(o => o.setName('nama').setDescription('Nama game yang mau dihapus').setRequired(true).setAutocomplete(true)),
+    .addStringOption(o => o.setName('nama').setDescription('Nama game yang nak dihapus').setRequired(true).setAutocomplete(true)),
 
   async autocomplete(interaction) {
     const focused = interaction.options.getFocused().toLowerCase();
@@ -75,13 +75,13 @@ const removegame = {
 
   async execute(interaction) {
     if (!isOwner(interaction.user.id) && !interaction.member.permissions.has(PermissionFlagsBits.Administrator)) {
-      return interaction.reply({ content: '❌ Lo tidak punya akses command ini.', ephemeral: true });
+      return interaction.reply({ content: '❌ Kau tak ada akses command ni.', ephemeral: true });
     }
 
     const nama = interaction.options.getString('nama');
     const data = db.read();
     const idx  = data.games.findIndex(g => g.name.toLowerCase() === nama.toLowerCase());
-    if (idx === -1) return interaction.reply({ content: `❌ Game **${nama}** tidak ditemukan.`, ephemeral: true });
+    if (idx === -1) return interaction.reply({ content: `❌ Game **${nama}** tak jumpa.`, ephemeral: true });
 
     const removed = data.games.splice(idx, 1)[0];
     db.write(data);
@@ -90,8 +90,8 @@ const removegame = {
       embeds: [new EmbedBuilder()
         .setColor(COLORS.danger)
         .setTitle('🗑️ Game Dihapus')
-        .setDescription(`**${removed.icon} ${removed.name}** berhasil dihapus dari database.`)
-        .setFooter({ text: `Dihapus oleh ${interaction.user.tag}` })
+        .setDescription(`**${removed.icon} ${removed.name}** berjaya dihapus dari database.`)
+        .setFooter({ text: `Dihapus oleh ${interaction.user.tag} • 9SpeedWay` })
         .setTimestamp()]
     });
   }
@@ -117,7 +117,7 @@ const setscript = {
 
   async execute(interaction) {
     if (!isOwner(interaction.user.id) && !interaction.member.permissions.has(PermissionFlagsBits.Administrator)) {
-      return interaction.reply({ content: '❌ Lo tidak punya akses command ini.', ephemeral: true });
+      return interaction.reply({ content: '❌ Kau tak ada akses command ni.', ephemeral: true });
     }
 
     const gameName = interaction.options.getString('game');
@@ -125,7 +125,7 @@ const setscript = {
     const data     = db.read();
     const game     = data.games.find(g => g.name.toLowerCase() === gameName.toLowerCase());
 
-    if (!game) return interaction.reply({ content: `❌ Game **${gameName}** tidak ditemukan.`, ephemeral: true });
+    if (!game) return interaction.reply({ content: `❌ Game **${gameName}** tak jumpa.`, ephemeral: true });
 
     game.script = script;
     db.write(data);
@@ -134,9 +134,9 @@ const setscript = {
       embeds: [new EmbedBuilder()
         .setColor(COLORS.success)
         .setTitle('✅ Script Diupdate')
-        .setDescription(`Script untuk **${game.icon} ${game.name}** berhasil diset.`)
+        .setDescription(`Script untuk **${game.icon} ${game.name}** berjaya diset.`)
         .addFields({ name: '📋 Preview', value: `\`\`\`lua\n${script.slice(0, 200)}${script.length > 200 ? '...' : ''}\n\`\`\`` })
-        .setFooter({ text: `Diset oleh ${interaction.user.tag}` })
+        .setFooter({ text: `Diset oleh ${interaction.user.tag} • 9SpeedWay` })
         .setTimestamp()],
       ephemeral: true
     });
