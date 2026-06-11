@@ -1,7 +1,7 @@
 {
-  "name": "orion-bot",
+  "name": "9speedway-bot",
   "version": "1.0.0",
-  "description": "OrionService Discord Bot",
+  "description": "9SpeedWay Discord Bot",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
