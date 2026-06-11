@@ -25,7 +25,7 @@ module.exports = {
       .setColor(COLORS.primary)
       .setTitle('🎮 9SpeedWay Supported Games')
       .setDescription(`Total **${games.length} game** yang disupport`)
-      .setImage('https://files.catbox.moe/vssmwf.gif')
+      .setImage('https://www.image2url.com/r2/default/gifs/1780773504145-da341a8b-d193-4244-9f7a-5d343ecf7572.gif')
       .setFooter({ text: '9SpeedWay • Guna /getscript <game> untuk ambil script' })
       .setTimestamp();
 
