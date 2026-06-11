@@ -21,8 +21,8 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setColor(COLORS.cyan)
       .setTitle('📋 9SPEEDWAY UPDATE — Log Terbaru')
-      .setImage('https://files.catbox.moe/v13x25.jpg')
-      .setFooter({ text: '9SpeedWay • Script Hub' })
+      .setImage('https://www.image2url.com/r2/default/gifs/1780773504145-da341a8b-d193-4244-9f7a-5d343ecf7572.gif')
+      .setFooter({ text: '9SpeedWay • Powered By Fiqqzr7' })
       .setTimestamp();
 
     for (const u of latest) {
