@@ -5,7 +5,7 @@ const { getUserKey, formatExpiry } = require('../../utils/keys');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('checkkey')
-    .setDescription('Cek status key akses lo'),
+    .setDescription('Check status key akses kau'),
 
   async execute(interaction) {
     const key = getUserKey(interaction.user.id);
@@ -13,15 +13,15 @@ module.exports = {
     if (!key) {
       const embed = new EmbedBuilder()
         .setColor(COLORS.danger)
-        .setTitle('🔑 Key Tidak Ditemukan')
+        .setTitle('🔑 Key Tak Jumpa')
         .setDescription([
-          'Lo belum punya key aktif.',
+          'Kau belum ada key aktif.',
           '',
           '💡 **Cara dapat key:**',
           '• Hubungi admin/owner',
-          '• Gunakan `/getkey` untuk request',
+          '• Guna `/getkey` untuk request',
         ].join('\n'))
-        .setFooter({ text: 'OrionService • Script Hub' })
+        .setFooter({ text: '9SpeedWay • Script Hub' })
         .setTimestamp();
       return interaction.reply({ embeds: [embed], ephemeral: true });
     }
@@ -31,11 +31,11 @@ module.exports = {
       .setTitle('🔑 Key Aktif')
       .addFields(
         { name: '🗝️ Key', value: `\`${key.key}\``, inline: false },
-        { name: '⏳ Sisa Waktu', value: `\`${formatExpiry(key.expiresAt)}\``, inline: true },
-        { name: '📅 Dibuat', value: `\`${new Date(key.createdAt).toLocaleDateString('id-ID')}\``, inline: true },
+        { name: '⏳ Baki Masa', value: `\`${formatExpiry(key.expiresAt)}\``, inline: true },
+        { name: '📅 Dicipta', value: `\`${new Date(key.createdAt).toLocaleDateString('ms-MY')}\``, inline: true },
         { name: '🕐 Durasi', value: `\`${key.duration} hari\``, inline: true },
       )
-      .setFooter({ text: 'OrionService • Jangan share key ini!' })
+      .setFooter({ text: '9SpeedWay • Jangan share key ni!' })
       .setTimestamp();
 
     await interaction.reply({ embeds: [embed], ephemeral: true });
