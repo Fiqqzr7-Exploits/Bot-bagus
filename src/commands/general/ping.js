@@ -4,10 +4,10 @@ const { base, COLORS } = require('../../utils/embed');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('ping')
-    .setDescription('Cek latency bot'),
+    .setDescription('Check latency bot'),
 
   async execute(interaction) {
-    const sent = await interaction.reply({ content: '🏓 Pinging...', fetchReply: true });
+    const sent = await interaction.reply({ content: '🏓 Ping...', fetchReply: true });
     const latency = sent.createdTimestamp - interaction.createdTimestamp;
     const ws = interaction.client.ws.ping;
 
@@ -16,7 +16,7 @@ module.exports = {
       .addFields(
         { name: '📡 Latency', value: `\`${latency}ms\``, inline: true },
         { name: '💗 WebSocket', value: `\`${ws}ms\``, inline: true },
-        { name: '🌐 Status', value: latency < 200 ? '`🟢 Good`' : '`🟡 Okay`', inline: true }
+        { name: '🌐 Status', value: latency < 200 ? '`🟢 Baik`' : '`🟡 Ok`', inline: true }
       );
 
     await interaction.editReply({ content: null, embeds: [embed] });
