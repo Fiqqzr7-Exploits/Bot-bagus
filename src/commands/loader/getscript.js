@@ -8,7 +8,7 @@ module.exports = {
     .setDescription('Ambil script untuk game tertentu')
     .addStringOption(opt =>
       opt.setName('game')
-        .setDescription('Nama game yang mau diambil scriptnya')
+        .setDescription('Nama game yang nak diambil scriptnya')
         .setRequired(true)
         .setAutocomplete(true)
     ),
@@ -32,9 +32,9 @@ module.exports = {
       return interaction.reply({
         embeds: [new EmbedBuilder()
           .setColor(COLORS.danger)
-          .setTitle('❌ Game Tidak Ditemukan')
-          .setDescription(`Game **${gameName}** tidak ada di database.\nGunakan \`/games\` untuk lihat game yang tersedia.`)
-          .setFooter({ text: 'OrionService' })],
+          .setTitle('❌ Game Tak Jumpa')
+          .setDescription(`Game **${gameName}** tak ada di database.\nGuna \`/games\` untuk tengok game yang tersedia.`)
+          .setFooter({ text: '9SpeedWay' })],
         ephemeral: true
       });
     }
@@ -43,9 +43,9 @@ module.exports = {
       return interaction.reply({
         embeds: [new EmbedBuilder()
           .setColor(COLORS.warn)
-          .setTitle('⚠️ Script Belum Tersedia')
-          .setDescription(`Script untuk **${game.icon} ${game.name}** belum diset.\nHubungi admin untuk info lebih lanjut.`)
-          .setFooter({ text: 'OrionService' })],
+          .setTitle('⚠️ Script Belum Sedia')
+          .setDescription(`Script untuk **${game.icon} ${game.name}** belum diset.\nHubungi admin untuk info lanjut.`)
+          .setFooter({ text: '9SpeedWay' })],
         ephemeral: true
       });
     }
@@ -61,12 +61,12 @@ module.exports = {
         '**📋 Script:**',
         `\`\`\`lua\n${game.script}\n\`\`\``,
       ].join('\n'))
-      .setFooter({ text: 'OrionService • Jangan share script ini ke orang lain!' })
+      .setFooter({ text: '9SpeedWay • Jangan share script ni dengan orang lain!' })
       .setTimestamp();
 
     const row = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
-        .setLabel('Copy Script')
+        .setLabel('Salin Script')
         .setStyle(ButtonStyle.Success)
         .setEmoji('📋')
         .setCustomId('copy_script')
@@ -77,8 +77,8 @@ module.exports = {
     // Public notice
     const publicEmbed = new EmbedBuilder()
       .setColor(COLORS.primary)
-      .setDescription(`📤 <@${interaction.user.id}> mengambil script **${game.icon} ${game.name}** — dikirim ke DM/ephemeral`)
-      .setFooter({ text: 'OrionService' });
+      .setDescription(`📤 <@${interaction.user.id}> mengambil script **${game.icon} ${game.name}** — dihantar ke DM/ephemeral`)
+      .setFooter({ text: '9SpeedWay' });
 
     await interaction.followUp({ embeds: [publicEmbed] });
   }
