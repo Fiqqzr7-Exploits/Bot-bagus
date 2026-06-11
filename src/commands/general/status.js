@@ -5,7 +5,7 @@ const db = require('../../utils/db');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('status')
-    .setDescription('Cek status OrionService panel'),
+    .setDescription('Check status panel 9SpeedWay'),
 
   async execute(interaction) {
     const data = db.read();
@@ -20,16 +20,16 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor(COLORS.primary)
-      .setTitle('⭐ Fiqqzr7XCode — Status Panel')
+      .setTitle('⭐ 9SpeedWay — Status Panel')
       .addFields(
         { name: '🤖 Bot', value: '`🟢 Online`', inline: true },
         { name: '⏱️ Uptime', value: `\`${h}j ${m}m ${s}s\``, inline: true },
         { name: '📡 Ping', value: `\`${interaction.client.ws.ping}ms\``, inline: true },
         { name: '🎮 Game Support', value: `✅ Working: \`${working}\`\n⚠️ Partial: \`${partial}\`\n❌ Broken: \`${broken}\``, inline: true },
-        { name: '⚡ Executor', value: `\`${data.executors.length}\` executor terdaftar`, inline: true },
+        { name: '⚡ Executor', value: `\`${data.executors.length}\` executor berdaftar`, inline: true },
         { name: '📋 Update Log', value: `\`${data.updates.length}\` update tercatat`, inline: true },
       )
-      .setFooter({ text: 'OrionService • Script Hub' })
+      .setFooter({ text: '9SpeedWay • Script Hub' })
       .setTimestamp();
 
     await interaction.reply({ embeds: [embed] });
