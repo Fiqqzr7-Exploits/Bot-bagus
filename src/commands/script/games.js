@@ -12,27 +12,27 @@ const STATUS_LABEL = {
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('games')
-    .setDescription('Lihat semua game yang disupport OrionService'),
+    .setDescription('Tengok semua game yang disupport 9SpeedWay'),
 
   async execute(interaction) {
     const games = db.get('games');
 
     if (!games.length) {
-      return interaction.reply({ content: '❌ Belum ada game terdaftar.', ephemeral: true });
+      return interaction.reply({ content: '❌ Belum ada game berdaftar.', ephemeral: true });
     }
 
     const embed = new EmbedBuilder()
       .setColor(COLORS.primary)
-      .setTitle('🎮 Orion Supported Games')
+      .setTitle('🎮 9SpeedWay Supported Games')
       .setDescription(`Total **${games.length} game** yang disupport`)
       .setImage('https://files.catbox.moe/vssmwf.gif')
-      .setFooter({ text: 'Fiqqzr7XCode • Gunakan /getscript <game> untuk ambil script' })
+      .setFooter({ text: '9SpeedWay • Guna /getscript <game> untuk ambil script' })
       .setTimestamp();
 
     for (const g of games) {
       embed.addFields({
         name: `${g.icon} ${g.name}`,
-        value: `${STATUS_LABEL[g.status] || '❓ Unknown'}\n📌 \`${g.feat || 'Tidak ada info'}\``,
+        value: `${STATUS_LABEL[g.status] || '❓ Unknown'}\n📌 \`${g.feat || 'Tiada info'}\``,
         inline: true,
       });
     }
